@@ -44,5 +44,18 @@ without the `data-` prefix, and with underscores instead of dashes.
 
 For example, where in the docs it says `data-zip-code="true"`, you'd use `zip_code="true"`.
 
+#### Configuration
+
+You may create a `site/addons/stripe.yaml` file containing any parameters that should be used by
+all `{{ stripe:checkout }}` tags on your site.
+
+A great example would be to include your key, company name, logo image, etc.
+
+```
+name: Statamic
+image: http://site.com/logo.png
+key: pk_test_123456789
+```
+
 
 [checkout]: https://stripe.com/checkout
