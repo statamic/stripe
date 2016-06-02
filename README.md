@@ -17,8 +17,14 @@ Outputs:
 ### Stripe Checkout
 A shortcut for generating a Stripe Checkout form.
 
+Can be used as a single tag, or tag pair. When using as a tag pair, the content between the
+tags will be injected inside the generated `<form>`. This is useful for adding hidden
+fields that your server side processing would need.
+
 ```
 {{ stripe:checkout action="/my-action" amount="500" description="T-shirt" }}
+    <input type="hidden" name="foo" value="bar" />
+{{ /stripe:checkout }}
 
 Outputs:
 <form action="/my-action" method="POST">
@@ -31,6 +37,7 @@ Outputs:
         data-image="/logo.png"
         ...
     ></script>
+    <input type="hidden" name="foo" value="bar" />
 </form>
 ```
 

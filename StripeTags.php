@@ -13,6 +13,10 @@ class StripeTags extends Tags
 
     public function checkout()
     {
+        // Get the content to go between the tags. If it's a tag pair,
+        // we'll parse the contents, otherwise just do nothing.
+        $content = ($this->content === false) ? '' : $this->parse([]);
+
         return '
             <form action="' . $this->get('action', '/charge') . '" method="POST">
                 <script
@@ -36,6 +40,7 @@ class StripeTags extends Tags
                     data-alipay="'. bool_str($this->getBool('alipay', false)) .'"
                     data-alipay-reusable="'. bool_str($this->getBool('alipay_reusable', false)) .'"
                 ></script>
+                '. $content .'
             </form>';
     }
 }
